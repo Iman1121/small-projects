@@ -17,7 +17,7 @@ def possible(row, column, number):
     for i in range(0,9):
         if sudoku[row][i] == number:
             return False
-    for i in range(0,9):
+    for i in range(9):
         if sudoku[i][column] == number:
             return False
     for i in range(0,3):
@@ -33,9 +33,14 @@ def solve():
             if sudoku[row][column] == 0:
                 for num in range(1,10):
                     if possible(row, column, num):
-                        sudoku[row][column] == num
+                        
+                        sudoku[row][column] = num
                         solve()
-                        sudoku[row][column] == 0
-    
-    return sudoku               
-print(solve()) 
+                        sudoku[row][column] = 0
+                return
+    print(sudoku)
+    input("More?")
+                   
+
+
+solve()
